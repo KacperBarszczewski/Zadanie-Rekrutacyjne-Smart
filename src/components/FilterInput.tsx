@@ -20,7 +20,7 @@ const FilterInput: React.FC<FilterInputProps> = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="border rounded px-2 py-1 mb-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="border rounded p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-slate-500"
     />
   );
 };

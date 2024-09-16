@@ -10,6 +10,7 @@ const initialState: UsersState = {
     email: "",
     phone: "",
   },
+  sortBy: null,
 };
 
 const userSlice = createSlice({
@@ -32,8 +33,20 @@ const userSlice = createSlice({
           user.phone.toLowerCase().includes(state.filter.phone.toLowerCase())
       );
     },
+    setSortBy(state, action: PayloadAction<keyof User>) {
+      state.sortBy = action.payload;
+      state.filteredUsers = [...state.filteredUsers].sort((a, b) => {
+        if (a[state.sortBy!] < b[state.sortBy!]) return -1;
+        if (a[state.sortBy!] > b[state.sortBy!]) return 1;
+        return 0;
+      });
+    },
+    resetSort(state) {
+      state.sortBy = null;
+      state.filteredUsers = [...state.filteredUsers];
+    },
   },
 });
 
-export const { setUsers, setFilter } = userSlice.actions;
+export const { setUsers, setFilter, setSortBy, resetSort } = userSlice.actions;
 export default userSlice.reducer;

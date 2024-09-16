@@ -15,4 +15,5 @@ export interface UsersState {
     email: string;
     phone: string;
   };
+  sortBy: keyof User | null;
 }
